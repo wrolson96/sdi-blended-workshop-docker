@@ -8,7 +8,7 @@
   - README.md
   - docker-compose.yaml
 
-## Dockerize a React Application
+## Containerize a React Application
   - Navigate to the /ui folder
   - Build a Create-React-App (nothing fancy - out of the box app will work fine!)
   - Verify `npm start` - will start and run your application and that you can access the default App loading page.
@@ -24,7 +24,7 @@
     - GOAL: Make sure you can STILL connect to your application on localhost - but using ONLY the docker-compose command
     - AFTER GOAL: use `docker-compose down`, verify that you can no longer access your application.
 
-## Dockerize an Express Application
+## Containerize an Express Application
 
   - Setup a BARE BONES express application.
   - Navigate to the /api folder
