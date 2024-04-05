@@ -1,0 +1,42 @@
+version: "3"
+services: 
+  user-interface:
+    image: user-interface
+    container_name: user-interface-container
+    ports: 
+      - "3000:3000"
+    build: ui/docker-compose-ui/
+    depends_on:
+      - 'server'
+    # networks:
+    #   - my_network
+
+  server: 
+    image: api
+    build: api/
+    container_name: api-container
+    ports: 
+      - "8080:8080"      
+    depends_on:
+      - db
+    # networks:
+    #   - my_network
+
+  db:
+    image: postgres:latest
+    container_name: db
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB = admin
+      - DATABASE_HOST = 127.0.0.1
+      - POSTGRES_USER = postgres
+      - POSTGRES_PASSWORD = docker
+    volumes:
+      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+    # networks:
+    #   - my_network
+
+# networks:
+#   my-network:
+#     driver: bridge
